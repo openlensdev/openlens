@@ -2,9 +2,24 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  Megaphone, Palette, Code2, TrendingUp, Star, Radio,
-  Search, FileText, Share2, Mail, Users, PenTool,
-  Video, Layout, Smartphone, Zap, BarChart3, Target
+  Megaphone,
+  Palette,
+  Code2,
+  TrendingUp,
+  Star,
+  Radio,
+  Search,
+  FileText,
+  Share2,
+  Mail,
+  Users,
+  PenTool,
+  Video,
+  Layout,
+  Smartphone,
+  Zap,
+  BarChart3,
+  Target,
 } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -23,7 +38,7 @@ const services = [
       { name: "Paid Advertising", detail: "Google Ads, PPC, CPC, display, app downloads", icon: Target },
       { name: "Email Marketing", detail: "automation, drip campaigns, newsletters", icon: Mail },
       { name: "Influencer Marketing", detail: "Instagram/TikTok/Shorts collabs, niche creators", icon: Users },
-    ]
+    ],
   },
   {
     id: 2,
@@ -36,7 +51,7 @@ const services = [
       { name: "Logo & Graphic Design", detail: "Logo Design & Graphic Design", icon: Palette },
       { name: "Video Production", detail: "AI video, film shooting, documentaries, reels", icon: Video },
       { name: "UI/UX Design", detail: "website/app interfaces, premium aesthetics", icon: Layout },
-    ]
+    ],
   },
   {
     id: 3,
@@ -47,9 +62,9 @@ const services = [
     items: [
       { name: "Full-Stack Development", detail: "frontend + backend", icon: Code2 },
       { name: "App Development", detail: "iOS, Android, hybrid", icon: Smartphone },
-      { name: "API Integrations", detail: "", icon: Zap },
+      { name: "API Integrations", detail: "third-party tools, payment gateways, CRM, automation", icon: Zap },
       { name: "Website Optimization", detail: "speed, security, maintenance", icon: TrendingUp },
-    ]
+    ],
   },
   {
     id: 4,
@@ -62,7 +77,7 @@ const services = [
       { name: "Marketing Automation", detail: "HubSpot, Mailchimp, CRM workflows", icon: Zap },
       { name: "Analytics & Reporting", detail: "Google Analytics, dashboards, ROI tracking", icon: BarChart3 },
       { name: "Market Research", detail: "competitor analysis, audience insights", icon: Search },
-    ]
+    ],
   },
   {
     id: 5,
@@ -71,8 +86,8 @@ const services = [
     icon: Star,
     color: "from-amber-500 to-orange-600",
     items: [
-      { name: "Product Feedback", detail: "Your Company Product feedback", icon: Star },
-    ]
+      { name: "Product Feedback", detail: "Your company product feedback", icon: Star },
+    ],
   },
   {
     id: 6,
@@ -81,102 +96,154 @@ const services = [
     icon: Radio,
     color: "from-rose-600 to-pink-600",
     items: [
-      { name: "Press Releases", detail: "", icon: FileText },
-      { name: "Press Conferences", detail: "", icon: Users },
-      { name: "Media Outreach", detail: "Pedia outreach", icon: Megaphone },
-      { name: "Reputation Building", detail: "", icon: Star },
-    ]
+      { name: "Press Releases", detail: "launch announcements, company news, campaign updates", icon: FileText },
+      { name: "Press Conferences", detail: "event planning, media coordination, brand messaging", icon: Users },
+      { name: "Media Outreach", detail: "media outreach and publication pitching", icon: Megaphone },
+      { name: "Reputation Building", detail: "trust building, credibility, and online authority", icon: Star },
+    ],
   },
 ];
 
 export default function Services() {
-  const root = useRef();
+  const root = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".hero h1", { y: 60, opacity: 0, duration: 1, ease: "power3.out" });
-      gsap.from(".hero p", { y: 30, opacity: 0, duration: 0.8, delay: 0.2 });
+      gsap.from(".hero h1", {
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      gsap.from(".hero p", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.2,
+      });
 
       gsap.utils.toArray(".service-card").forEach((card, i) => {
         gsap.from(card, {
-          scrollTrigger: { trigger: card, start: "top 85%" },
-          y: 60,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 88%",
+          },
+          y: 48,
           opacity: 0,
-          duration: 0.8,
-          delay: i * 0.05,
-          ease: "power2.out"
+          duration: 0.7,
+          delay: i * 0.04,
+          ease: "power2.out",
         });
 
-        // hover tilt
+        const glow = card.querySelector(".card-glow");
+
         card.addEventListener("mouseenter", () => {
-          gsap.to(card.querySelector(".card-glow"), { opacity: 0.3, duration: 0.3 });
+          gsap.to(glow, { opacity: 0.28, duration: 0.25 });
         });
+
         card.addEventListener("mouseleave", () => {
-          gsap.to(card.querySelector(".card-glow"), { opacity: 0, duration: 0.3 });
+          gsap.to(glow, { opacity: 0, duration: 0.25 });
         });
       });
 
       gsap.utils.toArray(".service-item").forEach((item) => {
         gsap.from(item, {
-          scrollTrigger: { trigger: item, start: "top 90%" },
-          x: -20,
+          scrollTrigger: {
+            trigger: item,
+            start: "top 92%",
+          },
+          x: -16,
           opacity: 0,
-          duration: 0.5,
+          duration: 0.45,
+          ease: "power2.out",
         });
       });
     }, root);
+
     return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={root} className="min-h-screen bg-[#fafafa] dark:bg-[#0a0a0f] text-zinc-900 dark:text-white">
-      {/* BG */}
+    <div
+      ref={root}
+      className="min-h-screen bg-[#fafafa] dark:bg-[#0a0a0f] text-zinc-900 dark:text-white overflow-hidden"
+    >
       <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_50%_0%,rgba(124,58,237,0.18),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_50%_0%,rgba(124,58,237,0.16),transparent_60%)]" />
       </div>
 
-      <section className="hero max-w-7xl mx-auto px-6 pt-24 pb-12 text-center">
+      <section className="hero max-w-7xl mx-auto px-4 sm:px-6 pt-24 md:pt-28 pb-10 md:pb-14 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-700 dark:text-violet-300 text-xs font-semibold">
           PREMIUM SERVICES
         </div>
-        <h1 className="mt-6 text-5xl lg:text-7xl font-black tracking-tight">
-          Our <span className="bg-gradient-to-r from-violet-600 to-pink-600 bg-clip-text text-transparent">Services</span>
+
+        <h1 className="mt-6 text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-tight">
+          Our{" "}
+          <span className="bg-gradient-to-r from-violet-600 to-pink-600 bg-clip-text text-transparent">
+            Services
+          </span>
         </h1>
-        <p className="mt-5 max-w-2xl mx-auto text-lg text-zinc-600 dark:text-zinc-400">
-          A professional agency engineered for scale. We combine performance marketing, iconic brand craft, and elite engineering.
+
+        <p className="mt-5 max-w-2xl mx-auto text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          A professional agency engineered for scale. We combine performance
+          marketing, iconic brand craft, and elite engineering.
         </p>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 pb-24">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-20 md:pb-24">
+        <div className="columns-1 md:columns-2 xl:columns-3 gap-5 lg:gap-6 space-y-5 lg:space-y-6">
           {services.map((s) => {
             const Icon = s.icon;
-            return (
-              <div key={s.id} className="service-card group relative">
-                <div className={`card-glow absolute -inset-0.5 rounded- bg-gradient-to-r ${s.color} opacity-0 blur-2xl transition-opacity`} />
-                <div className="relative h-full bg-white/80 dark:bg-zinc-900/70 backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-[1.8rem] p-7 lg:p-8 hover:-translate-y-1.5 transition-all duration-300 shadow-xl">
 
-                  <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${s.color} p-[1.5px] mb-5`}>
-                    <div className="w-full h-full rounded- bg-white dark:bg-zinc-900 grid place-items-center">
-                      <Icon className="w-6 h-6 text-zinc-900 dark:text-white" />
+            return (
+              <article
+                key={s.id}
+                className="service-card group relative break-inside-avoid mb-5 lg:mb-6"
+              >
+                <div
+                  className={`card-glow absolute -inset-0.5 rounded-[1.5rem] bg-gradient-to-r ${s.color} opacity-0 blur-2xl transition-opacity`}
+                />
+
+                <div className="relative bg-white/85 dark:bg-zinc-900/75 backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-[1.5rem] p-5 sm:p-6 lg:p-7 hover:-translate-y-1 transition-all duration-300 shadow-lg">
+                  <div
+                    className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br ${s.color} p-[1.5px] mb-5`}
+                  >
+                    <div className="w-full h-full rounded-[0.9rem] bg-white dark:bg-zinc-900 grid place-items-center">
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-zinc-900 dark:text-white" />
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-bold">{s.title}</h3>
-                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">{s.desc}</p>
+                  <h3 className="text-xl sm:text-2xl font-bold leading-tight">
+                    {s.title}
+                  </h3>
 
-                  <div className="mt-6 space-y-3">
+                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                    {s.desc}
+                  </p>
+
+                  <div className="mt-5 space-y-2.5">
                     {s.items.map((it) => {
                       const Ico = it.icon;
+
                       return (
-                        <div key={it.name} className="service-item flex items-start gap-3 group/item">
-                          <div className="mt-0.5 p-1.5 rounded-lg bg-black/5 dark:bg-white/5 group-hover/item:bg-violet-500/15 transition">
+                        <div
+                          key={it.name}
+                          className="service-item flex items-start gap-3 rounded-xl p-2 -mx-2 transition group/item hover:bg-black/5 dark:hover:bg-white/5"
+                        >
+                          <div className="mt-0.5 shrink-0 p-1.5 rounded-lg bg-black/5 dark:bg-white/5 group-hover/item:bg-violet-500/15 transition">
                             <Ico className="w-3.5 h-3.5 text-violet-600 dark:text-violet-400" />
                           </div>
-                          <div>
-                            <p className="text- font-medium leading-tight">{it.name}</p>
+
+                          <div className="min-w-0">
+                            <p className="text-sm font-semibold leading-snug break-words">
+                              {it.name}
+                            </p>
+
                             {it.detail && (
-                              <p className="text-xs text-zinc-500 dark:text-zinc-500 mt-0.5">{it.detail}</p>
+                              <p className="text-xs text-zinc-500 dark:text-zinc-500 mt-0.5 leading-relaxed break-words">
+                                {it.detail}
+                              </p>
                             )}
                           </div>
                         </div>
@@ -184,17 +251,22 @@ export default function Services() {
                     })}
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
 
-        {/* CTA */}
-        <div className="mt-20 text-center">
-          <div className="inline-block p- rounded-2xl bg-gradient-to-r from-violet-600 to-pink-600">
-            <div className="bg-[#fafafa] dark:bg-[#0a0a0f] rounded-2xl px-8 py-6">
-              <h4 className="text-xl font-bold">Need a bespoke growth system?</h4>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">We architect integrated playbooks across all 6 services</p>
+        <div className="mt-16 md:mt-20 text-center">
+          <div className="inline-block p-[1px] rounded-2xl bg-gradient-to-r from-violet-600 to-pink-600">
+            <div className="bg-[#fafafa] dark:bg-[#0a0a0f] rounded-2xl px-5 sm:px-8 py-6">
+              <h4 className="text-lg sm:text-xl font-bold">
+                Need a bespoke growth system?
+              </h4>
+
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1 max-w-md">
+                We architect integrated playbooks across all 6 services.
+              </p>
+
               <button className="mt-4 px-6 h-11 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-black font-semibold hover:scale-105 transition">
                 Book Strategy Call
               </button>
