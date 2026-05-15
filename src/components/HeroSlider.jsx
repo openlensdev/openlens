@@ -1,73 +1,49 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
-// const slides = [
-//   { img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80', pos: 'center', title: ['We Build', 'Tech That Scales.'], color: 'text-[#e81c7e]', sub: 'Modern Tech Agency • AI, Web Apps, Mobile & Cloud.' },
-//   { img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1920&q=80', pos: 'center 22%', title: ['Ship Products', 'In 6 Weeks.'], color: 'text-yellow-400', sub: 'Next.js, Flutter, Python, AWS — production-ready teams.' },
-//   { img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=80', pos: 'center', title: ['AI & Automation', 'Built-In.'], color: 'text-cyan-400', sub: 'Chatbots, RAG agents, workflows that cut costs 40%.' },
-//   { img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1920&q=80', pos: 'center 30%', title: ['Scale On Cloud', 'Securely.'], color: 'text-[#e81c7e]', sub: 'DevOps, CI/CD, 99.9% uptime architecture.' },
-// ];
-
 const slides = [
-  // Original Items
   { 
-    img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80', 
-    pos: 'center', 
-    title: ['We Build', 'Tech That Scales.'], 
-    color: 'text-[#e81c7e]', 
-    sub: 'Modern Tech Agency • AI, Web Apps, Mobile & Cloud.' 
-  },
-  { 
-    img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1920&q=80', 
-    pos: 'center 22%', 
-    title: ['Ship Products', 'In 6 Weeks.'], 
-    color: 'text-yellow-400', 
-    sub: 'Next.js, Flutter, Python, AWS — production-ready teams.' 
-  },
-  { 
-    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=80', 
-    pos: 'center', 
-    title: ['AI & Automation', 'Built-In.'], 
-    color: 'text-cyan-400', 
-    sub: 'Chatbots, RAG agents, workflows that cut costs 40%.' 
-  },
-  { 
-    img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1920&q=80', 
-    pos: 'center 30%', 
-    title: ['Scale On Cloud', 'Securely.'], 
-    color: 'text-[#e81c7e]', 
-    sub: 'DevOps, CI/CD, 99.9% uptime architecture.' 
-  },
-
-  // Newly Added Items
-  { 
-    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=80', 
+    img: 'https://images.unsplash.com/photo-1533750516457-a7f992034fec?auto=format&fit=crop&w=1920&q=80', 
     pos: 'center', 
     title: ['Digital', 'Marketing.'], 
     color: 'text-green-400', 
-    sub: 'SEO, PPC & Performance Marketing that drives ROI.' 
-  },
-  { 
-    img: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80', 
-    pos: 'center 25%', 
-    title: ['Public', 'Relations.'], 
-    color: 'text-purple-400', 
-    sub: 'Media Relations, Crisis Management & Strategic Communications.' 
-  },
-  { 
-    img: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=1920&q=80', 
-    pos: 'center', 
-    title: ['Branding', '& Creative.'], 
-    color: 'text-orange-400', 
-    sub: 'Visual Identity, UI/UX Design & Compelling Storytelling.' 
+    sub: 'Data-Driven SEO, Paid Ads & High-Converting Campaigns.' 
   },
   { 
     img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1920&q=80', 
     pos: 'center 20%', 
     title: ['Social Media', 'Management.'], 
     color: 'text-blue-400', 
-    sub: 'Community Building, Viral Content & Engagement Strategy.' 
-  }
+    sub: 'Viral Strategies, Community Growth & Influencer Partnerships.' 
+  },
+  { 
+    img: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80', 
+    pos: 'center 25%', 
+    title: ['Public', 'Relations.'], 
+    color: 'text-purple-400', 
+    sub: 'Strategic Communications, Media Placement & Brand Reputation.' 
+  },
+  { 
+    img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1920&q=80', 
+    pos: 'center', 
+    title: ['Branding', '& Creative.'], 
+    color: 'text-orange-400', 
+    sub: 'Striking Visual Identities, UI/UX & Compelling Storytelling.' 
+  },
+   { 
+    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=80', 
+    pos: 'center', 
+    title: ['Complete', 'Tech Support.'], 
+    color: 'text-cyan-400', 
+    sub: '24/7 IT Infrastructure, Cloud Management & Enterprise Solutions.' 
+  },
+  { 
+    img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80', 
+    pos: 'center 30%', 
+    title: ['Web & App', 'Development.'], 
+    color: 'text-[#e81c7e]', 
+    sub: 'Next-Gen Mobile Apps & Scalable Web Architectures.' 
+  },
 ];
 
 export default function HeroSlider({ dark }) {
